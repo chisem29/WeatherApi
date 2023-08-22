@@ -1,19 +1,27 @@
-import Layout from "./components/layout/Layout"
+import Layout from './components/layout/Layout';
 
-import QueryProvider from "./providers/QueryProvider"
-import { QueryClient } from "@tanstack/react-query"
+import QueryProvider from './providers/QueryProvider';
+import { QueryClient } from '@tanstack/react-query';
 
-import "./App.sass"
+import WeekRow from './components/UI/WeekRow/WeekRow';
+import CarouselData from './components/UI/CarouselData/CarouselData';
+import Main from './components/layout/Main/Main';
 
-const targetQueryClient = new QueryClient()
+import './App.sass';
+
+const targetQueryClient = new QueryClient();
 
 const App = () => {
   return (
-    <QueryProvider
-      client={targetQueryClient}>
-      <Layout />
+    <QueryProvider client={targetQueryClient}>
+      <Layout>
+        <Main>
+          <CarouselData />
+          <WeekRow /> 
+        </Main>
+      </Layout>
     </QueryProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

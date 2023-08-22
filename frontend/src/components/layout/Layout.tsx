@@ -1,18 +1,23 @@
-import { FC } from "react"
+import { FC, PropsWithChildren } from 'react';
 
-import Header from "./Header/Header"
-import Footer from "./Footer/Footer"
-import Main from "./Main/Main"
+import styles from './Layout.module.sass';
 
-const Layout : FC = () => {
+const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div
-      className="layout">
-      <Header />
-      <Main />
-      <Footer />
+      {...{
+        'data-img': `https://avatars.mds.yandex.net/i?id=e068f3bfdd027fc1cf8dcd2d0faa912bc4fab05e-9989050-images-thumbs&n=13`,
+      }}
+      className={`
+        ${styles.layout} 
+        relative
+        h-full
+        w-full
+      `}
+    >
+      {children}
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
