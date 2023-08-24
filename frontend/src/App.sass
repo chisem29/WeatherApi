@@ -2,3 +2,18 @@
   min-height: 100%
   min-width: 100%
   height: 100vh
+
+@mixin bgWeather()
+  object-fit: contain
+  background:
+    repeat: no-repeat
+    size: cover
+  &.NewYourk
+    background-image:  url(https://avatars.mds.yandex.net/i?id=e068f3bfdd027fc1cf8dcd2d0faa912bc4fab05e-9989050-images-thumbs&n=13) 
+  &.Moscow
+    background-image:  url(https://avatars.mds.yandex.net/i?id=cadbcf57b8e41065e113ea148ab40ace7bece5a5-5518637-images-thumbs&n=13) 
+  &.Tokyo
+    background-image:  url(https://avatars.mds.yandex.net/i?id=de6bb2b5995d4ce1ac7565b90c7dc7a705344ced-9100075-images-thumbs&n=13) 
+  &.Paris
+    background-image:  url(https://avatars.mds.yandex.net/i?id=37a8180d607b7863833924e93f5c84e4a11da0b5-9203641-images-thumbs&n=13) 
+  

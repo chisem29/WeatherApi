@@ -1,7 +1,26 @@
-import { FC } from "react"
+import { FC } from 'react';
 
-const CarouselData: FC = () => {
-  return <div className="lg:basis-9/12">Data</div>;
-}
+import styles from "./CarouselData.module.sass"
 
-export default CarouselData
+import carouselDataI from '@/shared/interfaces/carouselData';
+
+  const CarouselData: FC<carouselDataI> = ({ city, setCity }) => {
+
+  return (
+    <div
+      className={`
+        ${styles.carouselData} ${styles[city.toString()]} 
+        flex 
+        justify-center 
+        items-center 
+        py-5 
+        basis-9/12 
+        max-lg:h-full 
+        w-full
+      `}>
+      {city.toString().toUpperCase()}
+    </div>
+  );
+};
+
+export default CarouselData;

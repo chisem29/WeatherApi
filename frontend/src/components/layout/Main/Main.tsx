@@ -15,13 +15,16 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
          items-center
          py-[5%]
          px-[8%]
+         rounded-xl
       `}
     >
       <div
         className={`
           container 
-          bg-black h-[90%]
-          flex lg:flex-col flex-row
+          h-[90%]
+          flex 
+          lg:flex-col 
+          flex-row
         `}
       >
         {children}
