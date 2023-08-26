@@ -8,7 +8,7 @@ import useCity from './hooks/useCity';
 
 import './App.sass';
 
-// MY PERSONAL COMMIT AND MORE AND NOTHING
+// MY PERSONAL COMMIT AND MORE
 
 const App = () => {
 
