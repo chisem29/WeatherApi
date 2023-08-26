@@ -14,7 +14,6 @@ const Layout: FC<PropsWithChildren<Pick<carouselDataI, "city">>> = ({ children, 
         h-full
         w-full
         max-w-screen
-        rounded-md
       `}
     >
       {children}

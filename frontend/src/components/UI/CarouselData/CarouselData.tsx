@@ -1,10 +1,19 @@
 import { FC } from 'react';
 
-import styles from "./CarouselData.module.sass"
-
+import useLocCity from '../../../hooks/useLocCity';
 import carouselDataI from '@/shared/interfaces/carouselData';
 
-  const CarouselData: FC<carouselDataI> = ({ city, setCity }) => {
+import styles from "./CarouselData.module.sass"
+import useWeatherReport from '../../../hooks/useWeatherReport';
+
+
+const CarouselData: FC<carouselDataI> = ({ city, setCity }) => {
+
+  const { data: loc, isSuccess } = useLocCity({ city: city })
+
+  const { data: rep, refetch } = useWeatherReport({ lat: loc[0], lon: loc[1] })
+
+  console.log(rep)
 
   return (
     <div

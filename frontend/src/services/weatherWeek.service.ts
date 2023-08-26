@@ -1,5 +1,7 @@
 import axios from 'axios';
+
 import locCountryI from '@/shared/interfaces/locCountry';
+import weatherRepI from '@/shared/interfaces/weatherRep';
 
 class WeatherWeekService {
   lang?: string;
@@ -13,15 +15,15 @@ class WeatherWeekService {
   }
 
   public async getData<T = number>(lat: T, lon: T) {
-    const { data } = await axios<any>({
-      method: 'GET',
+    const { data } = await axios<weatherRepI>({
+      method: 'POST',
       url: `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${this.apiKey}`,
     });
 
     return data;
   }
 
-  public async getLoc<T = string>(city: T, countryCode?: T, stateCode?: T) {
+  public async getLoc<T = string>(city: T) {
     const { data } = await axios<Array<locCountryI>>({
       method: 'GET',
       url: `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${this.apiKey}`,

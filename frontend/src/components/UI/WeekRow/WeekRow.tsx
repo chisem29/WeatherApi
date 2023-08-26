@@ -2,8 +2,11 @@
 import { FC } from 'react'
 
 import styles from "./WeekRow.module.sass"
+import useLocCity from '../../../hooks/useLocCity';
 
-const WeekRow: FC<{loc : any}> = () => {
+const WeekRow: FC = () => {
+
+  const {data:loc} = useLocCity({ city : "Tokyo"})
 
   return (
     <div
@@ -28,6 +31,7 @@ const WeekRow: FC<{loc : any}> = () => {
       >
         {[1, 2, 3, 4, 5, 6, 7].map((elemWeather, index) => (
           <li
+            key={index}
             className={`
               flex
               lg:flex-col
