@@ -6,7 +6,6 @@ import carouselDataI from '@/shared/interfaces/carouselData';
 import styles from "./CarouselData.module.sass"
 import useWeatherReport from '../../../hooks/useWeatherReport';
 
-
 const CarouselData: FC<carouselDataI> = ({ city, setCity }) => {
 
   const { data: loc } = useLocCity({ city: city })
