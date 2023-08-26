@@ -9,7 +9,7 @@ import useWeatherReport from '../../../hooks/useWeatherReport';
 
 const CarouselData: FC<carouselDataI> = ({ city, setCity }) => {
 
-  const { data: loc, isSuccess } = useLocCity({ city: city })
+  const { data: loc } = useLocCity({ city: city })
 
   const { data: rep, refetch } = useWeatherReport({ lat: loc[0], lon: loc[1] })
 
