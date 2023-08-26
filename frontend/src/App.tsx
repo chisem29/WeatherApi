@@ -8,6 +8,8 @@ import useCity from './hooks/useCity';
 
 import './App.sass';
 
+// MY PERSONAL COMMIT
+
 const App = () => {
 
   const [city, setCity] = useCity("Tokyo")
