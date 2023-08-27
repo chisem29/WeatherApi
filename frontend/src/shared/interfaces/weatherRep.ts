@@ -1,9 +1,11 @@
+import cityT from "../types/city";
+
 interface weatherRepI {
   cod: string;
   message: any;
-  cnt: number;
-  list: Array<any>;
-  city: any;
+  cnt?: number;
+  list?: Array<any>;
+  city?: any
 }
 
 export default weatherRepI

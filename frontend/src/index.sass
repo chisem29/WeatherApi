@@ -17,3 +17,13 @@ body
   padding: 0
   border: 0
   margin: 0
+
+:not(body)
+  &::-webkit-scrollbar 
+    position: absolute
+    right: 6px
+    width: 6px            
+  &::-webkit-scrollbar-track 
+    background: #0000003f   
+  &::-webkit-scrollbar-thumb 
+    background: #0000004d

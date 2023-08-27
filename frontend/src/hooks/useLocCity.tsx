@@ -11,9 +11,9 @@ const useLocCity = ({ city }: Pick<carouselDataI, 'city'>) =>
   useQuery({
     queryKey: ['weather', 'city'],
     queryFn: () => weatherWeekService.getLoc<typeof city>(city),
+    select: ([{ lat, lon }]) => [lat, lon],
     initialData: [],
     staleTime: 0,
-    select: ([{ lat, lon }]) => [lat, lon],
   });
 
 export default useLocCity;

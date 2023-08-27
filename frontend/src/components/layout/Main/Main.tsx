@@ -15,7 +15,6 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
          items-center
          py-[5%]
          px-[8%]
-         rounded-xl
       `}
     >
       <div

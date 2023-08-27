@@ -3,10 +3,17 @@ import { FC } from 'react'
 
 import styles from "./WeekRow.module.sass"
 import useLocCity from '../../../hooks/useLocCity';
+import carouselDataI from '@/shared/interfaces/carouselData';
+import useWeatherReport from '../../../hooks/useWeatherReport';
 
-const WeekRow: FC = () => {
+const WeekRow: FC<Pick<carouselDataI, "city">> = ({ city }) => {
 
-  const {data:loc} = useLocCity({ city : "Tokyo"})
+  const {data:loc} = useLocCity({ city : city })
+
+  const { } = useWeatherReport({
+    lat: loc?.at(0) ?? 0,
+    lon: loc?.at(1) ?? 0,
+  });
 
   return (
     <div
@@ -16,7 +23,8 @@ const WeekRow: FC = () => {
         lg:w-full
         max-lg:max-w-[50%]
         ${styles.weekRow}
-        
+        max-lg:overflow-hidden
+        max-lg:min-w-[150px]
       `}
     >
       <ul
@@ -27,6 +35,10 @@ const WeekRow: FC = () => {
            w-full
            h-full
            flex-col
+           snap-mandatory
+           snap-y
+           max-lg:overflow-y-scroll
+           relative
         `}
       >
         {[1, 2, 3, 4, 5, 6, 7].map((elemWeather, index) => (
@@ -40,21 +52,21 @@ const WeekRow: FC = () => {
               items-center
               backdrop-blur-md
               bg-[#69373754]
-              lg:h-full
               border-r-[1px]
               border-r-[#0000001f]
               border-solid
               border-t-[5px]
               border-t-[#631818]
               lg:max-w-[14.2867143%]
+              h-full
+              h-min-[200px]
               px-5
+              py-2
+              snap-start
             `}
           >
-            <span>{elemWeather}</span>
             <p className="break-words max-w-[100%]">
-              {['Mon', 'Thuse', 'Wendes', 'thurs', 'fri', 'satur', 'sun'][
-                index
-              ] + 'dayasdasdsadsadsdadasdas545fghjk'}
+              {['Mon', 'Thuse', 'Wendes', 'thurs', 'fri', 'satur', 'sun'][index]}
             </p>
           </li>
         ))}

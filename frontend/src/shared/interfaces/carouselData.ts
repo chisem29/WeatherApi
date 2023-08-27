@@ -1,18 +1,8 @@
 import cityT from '../types/city';
 
 interface carouselDataI {
-  city:
-    | cityT
-    | React.Dispatch<{
-        payload: any;
-        type: string;
-      }>;
-  setCity:
-    | cityT
-    | React.Dispatch<{
-        payload: any;
-        type: string;
-      }>;
+  city: cityT;
+  setCity: React.Dispatch<React.SetStateAction<cityT>>;
 }
 
-export default carouselDataI
+export default carouselDataI;
