@@ -5,10 +5,14 @@ import styles from "./WeekRow.module.sass"
 import useLocCity from '../../../hooks/useLocCity';
 import carouselDataI from '@/shared/interfaces/carouselData';
 import useWeatherReport from '../../../hooks/useWeatherReport';
+import useCity from '../../../hooks/useCity';
+import cityT from '@/shared/types/city';
 
-const WeekRow: FC<Pick<carouselDataI, "city">> = ({ city }) => {
+const WeekRow: FC<Pick<carouselDataI, "cityIndex">> = ({ cityIndex }) => {
 
-  const {data:loc} = useLocCity({ city : city })
+  const [ city ] = useCity(cityIndex)
+
+  const {data:loc} = useLocCity((city as cityT))
 
   const { } = useWeatherReport({
     lat: loc?.at(0) ?? 0,

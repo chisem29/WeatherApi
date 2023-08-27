@@ -1,4 +1,4 @@
-import { DefinedUseQueryResult } from '@tanstack/react-query';
+
 import { FC } from 'react';
 
 const FallbackData: FC = () => {

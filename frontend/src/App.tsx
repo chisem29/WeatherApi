@@ -3,26 +3,31 @@ import WeekRow from './components/UI/WeekRow/WeekRow';
 import CarouselData from './components/UI/CarouselData/CarouselData';
 import Main from './components/layout/Main/Main';
 
-import useCity from './hooks/useCity';
-import cityT from './shared/types/city';
+import useCity from './hooks/useCityIndex';
+
+import SupsensData from './components/UI/SupsensData/SupsensData';
+import cityIndexT from './shared/types/cityIndex';
 
 import './App.sass';
-import SupsensData from './components/UI/SupsensData/SupsensData';
 
 const App = () => {
-  const [city, setCity] = useCity('Paris');
+  const [cityIndex, setIndex] = useCity(1);
 
   return (
-    <Layout city={city as cityT}>
+    <Layout cityIndex={cityIndex as cityIndexT}>
       <Main>
         <SupsensData>
           <CarouselData
-            city={city as cityT}
-            setCity={setCity as React.Dispatch<React.SetStateAction<cityT>>}
+            cityIndex={cityIndex as cityIndexT}
+            setIndex={
+              setIndex as React.Dispatch<
+                React.MouseEvent<HTMLSpanElement, MouseEvent>
+              >
+            }
           />
         </SupsensData>
         <SupsensData>
-          <WeekRow city={city as cityT} />
+          <WeekRow cityIndex={cityIndex as cityIndexT} />
         </SupsensData>
       </Main>
     </Layout>

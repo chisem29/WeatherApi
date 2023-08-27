@@ -1,10 +1,14 @@
-import { useReducer, useState } from 'react';
-import cityT from '@/shared/types/city';
+import { useState } from "react"
 
-const useCity = (state: cityT) => {
-  const [currentCity, setCity] = useState<cityT>(state)
+import cities from "../data/cities.json"
 
-  return [currentCity, setCity];
-};
+import cityT from "@/shared/types/city"
+import cityIndexT from "@/shared/types/cityIndex"
 
-export default useCity;
+const useCity = (cityIndex : cityIndexT) => {
+  const [ city, setCity ] = useState<cityT>((cities[cityIndex] as cityT))
+
+  return [ city, setCity ]
+}
+
+export default useCity
