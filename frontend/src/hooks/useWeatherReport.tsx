@@ -12,7 +12,6 @@ const useWeatherReport = ({ lat, lon }: Pick<locCountryI, 'lat' | 'lon'>) => {
     queryKey: ['weather', 'week'],
     queryFn: () => weatherWeekService.getData<typeof lat>(lat, lon),
     select: ({ list }) => list,
-    suspense : true,
     initialData: {
       list: [],
       cod: 'no-cod',
@@ -20,7 +19,6 @@ const useWeatherReport = ({ lat, lon }: Pick<locCountryI, 'lat' | 'lon'>) => {
       message: 'no-info',
       city: undefined,
     },
-    staleTime : 0
   });
 };
 
