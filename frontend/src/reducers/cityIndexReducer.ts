@@ -1,17 +1,21 @@
-import actionCityIndexT from "../shared/types/actionCityType";
+import actionCityIndexT from '../shared/types/actionCityType';
+import {
+  DECREMENT,
+  INCREMENT,
+  TOLENGTH,
+  TOZERO,
+} from '../actions/cityIndexActions';
 
 const cityIndexReducer = (state: any, action: actionCityIndexT) => {
   switch (action.type) {
-    case 'INCREMENT':
+    case DECREMENT:
       return state + 1;
-    case 'DECREMENT':
+    case INCREMENT:
       return state - 1;
-    case 'TOZERO':
+    case TOZERO:
       return 0;
-    case 'TOLENGTH':
+    case TOLENGTH:
       return action?.payload;
-    default:
-      break;
   }
 };
 

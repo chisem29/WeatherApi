@@ -1,36 +1,41 @@
+
 import Layout from './components/layout/Layout';
 import WeekRow from './components/UI/WeekRow/WeekRow';
-import CarouselData from './components/UI/CarouselData/CarouselData';
+import Carousel from './components/UI/Carousel/Carousel';
 import Main from './components/layout/Main/Main';
-
-import useCity from './hooks/useCityIndex';
-
 import SupsensData from './components/UI/SupsensData/SupsensData';
-import cityIndexT from './shared/types/cityIndex';
+import CarouselData from './components/UI/CarouselData/CarouselData';
+
+import useCityIndex from './hooks/useCityIndex';
+
+import ContextProvider from './providers/ContextProvider';
+import QueryProvider from './providers/QueryProvider';
+import { QueryClient } from '@tanstack/react-query';
 
 import './App.sass';
+import cityIndexT from './shared/types/cityIndex';
+
+const targetQueryClient = new QueryClient();
 
 const App = () => {
-  const [cityIndex, setIndex] = useCity(1);
 
   return (
-    <Layout cityIndex={cityIndex as cityIndexT}>
-      <Main>
-        <SupsensData>
-          <CarouselData
-            cityIndex={cityIndex as cityIndexT}
-            setIndex={
-              setIndex as React.Dispatch<
-                React.MouseEvent<HTMLSpanElement, MouseEvent>
-              >
-            }
-          />
-        </SupsensData>
-        <SupsensData>
-          <WeekRow cityIndex={cityIndex as cityIndexT} />
-        </SupsensData>
-      </Main>
-    </Layout>
+    <QueryProvider client={targetQueryClient}>
+      <ContextProvider>
+        <Layout>
+          <Main>
+            <Carousel >
+              <SupsensData>
+                <CarouselData  />
+              </SupsensData>
+            </Carousel>
+            <SupsensData>
+              <WeekRow />
+            </SupsensData>
+          </Main>
+        </Layout>
+      </ContextProvider>
+    </QueryProvider>
   );
 };
 

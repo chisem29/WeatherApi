@@ -1,5 +1,5 @@
 
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 
 import styles from "./WeekRow.module.sass"
 import useLocCity from '../../../hooks/useLocCity';
@@ -8,7 +8,11 @@ import useWeatherReport from '../../../hooks/useWeatherReport';
 import useCity from '../../../hooks/useCity';
 import cityT from '@/shared/types/city';
 
-const WeekRow: FC<Pick<carouselDataI, "cityIndex">> = ({ cityIndex }) => {
+import { Context } from '../../../providers/ContextProvider';
+
+const WeekRow: FC = () => {
+
+  const { cityIndex, setIndex } = useContext(Context)
 
   const [ city ] = useCity(cityIndex)
 
