@@ -6,11 +6,11 @@ import useWeatherReport from "../../../hooks/useWeatherReport";
 import useCity from "../../../hooks/useCity";
 
 import cityT from "@/shared/types/city";
-import { Context } from '../../../providers/ContextProvider';
+import { CityContext } from '../../../providers/ContextProvider';
 
 const CarouselData : FC = () => {
 
-  const { cityIndex } = useContext(Context)
+  const { cityIndex } = useContext(CityContext)
 
   const [city] = useCity(cityIndex);
   const { data: loc } = useLocCity(city as cityT);

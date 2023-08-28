@@ -8,11 +8,11 @@ import useWeatherReport from '../../../hooks/useWeatherReport';
 import useCity from '../../../hooks/useCity';
 import cityT from '@/shared/types/city';
 
-import { Context } from '../../../providers/ContextProvider';
+import { CityContext } from '../../../providers/ContextProvider';
 
 const WeekRow: FC = () => {
 
-  const { cityIndex, setIndex } = useContext(Context)
+  const { cityIndex, setIndex } = useContext(CityContext)
 
   const [ city ] = useCity(cityIndex)
 
