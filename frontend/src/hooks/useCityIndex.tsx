@@ -1,28 +1,12 @@
-import { useReducer, MouseEvent } from 'react';
+import { useReducer } from 'react';
 
 import cityIndexT from '../shared/types/cityIndex';
+import cityIndexReducer from '@/reducers/cityIndexReducer';
 
 const useCityIndex = (state: cityIndexT) => {
-  
-  const [currentCity, setCity] = useReducer(
-    (n: any, e: MouseEvent) => {
-      if ((e.target as HTMLElement).id[0] === 'r') {
-        if (state < 4) {
-          return state + 1;
-        }
-        return 0;
-      }
-      if ((e.target as HTMLElement).id[0] === 'l') {
-        if (state > 0) {
-          return state - 1;
-        }
-        return;
-      }
-    },
-    state,
-  );
-  
-  return [currentCity, setCity];
+  const [currentCity, dispatchCity] = useReducer(cityIndexReducer, state);
+
+  return [currentCity, dispatchCity];
 };
 
 export default useCityIndex;

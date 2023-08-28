@@ -7,13 +7,13 @@ const weatherWeekService = new WeatherWeekService(
   'f227fe6641bae569ca6d28d071d27db3',
 );
 
-const useLocCity = (city : cityT) => {
+const useLocCity = (city: cityT) => {
   return useQuery({
     queryKey: ['weather', 'city'],
     queryFn: () => weatherWeekService.getLoc<typeof city>(city),
     select: ([{ lat, lon }]) => [lat, lon],
     initialData: [],
   });
-}
+};
 
 export default useLocCity;
