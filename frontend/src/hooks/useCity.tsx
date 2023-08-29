@@ -1,14 +1,12 @@
-import { useState } from "react"
+import { useMemo } from 'react';
 
-import cities from "../data/cities.json"
+import cities from '../data/cities.json';
+import cityIndexT from '@/shared/types/cityIndex';
 
-import cityT from "@/shared/types/city"
-import cityIndexT from "@/shared/types/cityIndex"
+const useCity = (cityIndex: cityIndexT) => {
+  const city = useMemo(() => cities[cityIndex], [cityIndex]);
 
-const useCity = (cityIndex : cityIndexT) => {
-  const [ city, setCity ] = useState<cityT>((cities[cityIndex] as cityT))
+  return { city };
+};
 
-  return [ city, setCity ]
-}
-
-export default useCity
+export default useCity;

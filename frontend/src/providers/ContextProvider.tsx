@@ -1,7 +1,6 @@
 import { FC, PropsWithChildren, createContext } from 'react';
 import carouselDataI from '@/shared/interfaces/carouselData';
 
-import cityIndexReducer from '../reducers/cityIndexReducer';
 import cityIndexT from '@/shared/types/cityIndex';
 import useCityIndex from '../hooks/useCityIndex';
 

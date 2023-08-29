@@ -1,18 +1,15 @@
-import { FC, PropsWithChildren, useContext } from 'react';
+import { FC, PropsWithChildren, useContext, useEffect } from 'react';
 
 import styles from './Layout.module.sass';
+
 import { CityContext } from '../../providers/ContextProvider';
 import useCity from '../../hooks/useCity';
 import cityIndexT from '@/shared/types/cityIndex';
-import carouselDataI from '@/shared/interfaces/carouselData';
 
-const Layout: FC<PropsWithChildren> = ({
-  children,
-}) => {
+const Layout: FC<PropsWithChildren> = ({ children }) => {
+  const { cityIndex } = useContext(CityContext);
 
-  const { cityIndex } = useContext(CityContext)
-
-  const [city] = useCity(cityIndex as cityIndexT)
+  const { city } = useCity(cityIndex as cityIndexT);
 
   return (
     <div

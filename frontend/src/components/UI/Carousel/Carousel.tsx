@@ -4,13 +4,10 @@ import styles from './Carousel.module.sass';
 
 import useCity from '../../../hooks/useCity';
 import { CityContext } from '../../../providers/ContextProvider';
-import carouselDataI from '@/shared/interfaces/carouselData';
 
 const Carousel: FC<PropsWithChildren> = ({ children }) => {
-  const { cityIndex, setIndex } = useContext(CityContext)
-  const [city] = useCity(cityIndex);
-
-  console.log(cityIndex);
+  const { cityIndex, setIndex } = useContext(CityContext);
+  const { city } = useCity(cityIndex);
 
   return (
     <div
@@ -27,20 +24,28 @@ const Carousel: FC<PropsWithChildren> = ({ children }) => {
       `}
     >
       {children}
-      <div className={`w-full absolute ${styles.arrowGroup}`}>
+      <div className={`w-full h-full flex items-center justify-center absolute ${styles.arrowGroup}`}>
         <span
           onClick={() => {
-            setIndex({ type: 'DECREMENT' });
-            console.log(cityIndex);
+            setIndex(
+              cityIndex > 0
+                ? { type: 'DECREMENT' }
+                : { type: 'TOLENGTH', payload: 3 },
+            );
           }}
           id="leftArrow"
-          className={`absolute left-10 max-lg:left-[5px] rotate-180 cursor-pointer`}
+          className={`absolute lg:left-10 md:left-5 max-md:top-[5px] rotate-180 cursor-pointer`}
         >
           <img src="https://img.icons8.com/?size=1x&id=61&format=png" />
         </span>
         <span
+          onClick={() => {
+            setIndex(
+              cityIndex < 3 ? { type: 'INCREMENT' } : { type: 'TOZERO' },
+            );
+          }}
           id="rightArrow"
-          className={`absolute right-10 max-lg:right-[5px] cursor-pointer`}
+          className={`absolute lg:right-10 md:right-5 max-md:bottom-[5px] cursor-pointer`}
         >
           <img src="https://img.icons8.com/?size=1x&id=61&format=png" />
         </span>

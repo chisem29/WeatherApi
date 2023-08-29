@@ -1,27 +1,29 @@
 
-import { FC, useContext } from 'react'
+import { FC } from 'react'
 
 import styles from "./WeekRow.module.sass"
-import useLocCity from '../../../hooks/useLocCity';
-import carouselDataI from '@/shared/interfaces/carouselData';
-import useWeatherReport from '../../../hooks/useWeatherReport';
-import useCity from '../../../hooks/useCity';
-import cityT from '@/shared/types/city';
+import useCombineReport from '../../../hooks/useCombineReport';
 
-import { CityContext } from '../../../providers/ContextProvider';
+const getWeekDayByDate = (date: string) => {
+  const dayOfWeek = new Date(date).getDay()
+  return isNaN(dayOfWeek)
+    ? null
+    : [
+        'sunday',
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday',
+      ][dayOfWeek];
+};
 
 const WeekRow: FC = () => {
 
-  const { cityIndex, setIndex } = useContext(CityContext)
+  const { weatherRep: data, city } = useCombineReport();
 
-  const [ city ] = useCity(cityIndex)
-
-  const {data:loc} = useLocCity((city as cityT))
-
-  const { } = useWeatherReport({
-    lat: loc?.at(0) ?? 0,
-    lon: loc?.at(1) ?? 0,
-  });
+  console.log(city, data)
 
   return (
     <div
@@ -49,7 +51,7 @@ const WeekRow: FC = () => {
            relative
         `}
       >
-        {[1, 2, 3, 4, 5, 6, 7].map((elemWeather, index) => (
+        {data?.slice(0, 7)?.map((elemWeather, index) => (
           <li
             key={index}
             className={`
@@ -71,11 +73,16 @@ const WeekRow: FC = () => {
               px-5
               py-2
               snap-start
+              tracking-tighter
+              gap-y-3
+              ${styles.elemWeek}
             `}
           >
-            <p className="break-words max-w-[100%]">
-              {['Mon', 'Thuse', 'Wendes', 'thurs', 'fri', 'satur', 'sun'][index]}
-            </p>
+            <span className="max-w-[100%]">
+              {getWeekDayByDate(String(elemWeather.dt_txt).split(' ')[0])}
+            </span>
+            <img src=""/>
+            <span>{273 - elemWeather.main.temp}</span>
           </li>
         ))}
       </ul>
