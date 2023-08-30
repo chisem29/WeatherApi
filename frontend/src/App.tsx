@@ -25,9 +25,7 @@ const App = () => {
                 <CarouselData />
               </SupsensData>
             </Carousel>
-            <SupsensData>
-              <WeekRow />
-            </SupsensData>
+            <WeekRow />
           </Main>
         </Layout>
       </ContextProvider>

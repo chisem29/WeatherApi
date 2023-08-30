@@ -1,10 +1,12 @@
 import { CityContext } from './../providers/ContextProvider';
 import { useContext } from 'react';
+
 import useCity from './useCity';
 import useLocCity from './useLocCity';
-import cityT from '@/shared/types/city';
 import useWeatherReport from './useWeatherReport';
 import useRefetchByCity from './useRefetchByCity';
+
+import cityT from '@/shared/types/city';
 
 const useCombineReport = () => {
   const { cityIndex } = useContext(CityContext);
@@ -13,7 +15,7 @@ const useCombineReport = () => {
 
   const { data: loc, refetch: refetchLoc } = useLocCity(city as cityT);
 
-  const { data: weatherRep, refetch: refetchRep } = useWeatherReport({
+  const { data: weatherRep, refetch: refetchRep, isLoading, isError } = useWeatherReport({
     lat: loc?.at(0) ?? 0,
     lon: loc?.at(1) ?? 0,
   });
@@ -30,7 +32,7 @@ const useCombineReport = () => {
   refetchBiCityLoc();
   refetchBiCityRep();
 
-  return { weatherRep, city };
+  return { weatherRep, city, isLoading, isError };
 };
 
 export default useCombineReport;

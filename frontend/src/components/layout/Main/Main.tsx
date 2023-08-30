@@ -24,7 +24,6 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
           flex 
           lg:flex-col 
           flex-row
-          rounded-md
         `}
       >
         {children}

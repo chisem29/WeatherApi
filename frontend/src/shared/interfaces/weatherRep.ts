@@ -1,10 +1,11 @@
-import cityT from "../types/city";
+
+import weatherListElemI from "./weatherListElem";
 
 interface weatherRepI {
   cod: string;
   message: any;
   cnt?: number;
-  list?: Array<any>;
+  list?: Array<weatherListElemI>;
   city?: any
 }
 

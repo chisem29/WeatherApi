@@ -20,7 +20,8 @@ const useWeatherReport = ({ lat, lon }: Pick<locCountryI, 'lat' | 'lon'>) => {
       city: undefined,
     },
     suspense: true,
-    staleTime: 500
+    useErrorBoundary : true,
+    staleTime: 0
   });
 };
 

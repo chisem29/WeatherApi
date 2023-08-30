@@ -2,7 +2,7 @@
 import { FC } from 'react';
 
 const FallbackData: FC = () => {
-  return <div> Loading... </div>
+  return <h4 className="relative"> Loading... </h4>
 };
 
 export default FallbackData;

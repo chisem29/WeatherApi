@@ -12,7 +12,7 @@ const Carousel: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div
       className={`
-        ${styles.carouselData} ${styles[String(city)]} 
+        ${styles.carouselData} ${styles[city]} 
         flex 
         justify-center 
         items-center 
@@ -24,7 +24,9 @@ const Carousel: FC<PropsWithChildren> = ({ children }) => {
       `}
     >
       {children}
-      <div className={`w-full h-full flex items-center justify-center absolute ${styles.arrowGroup}`}>
+      <div
+        className={`w-full h-full flex items-center justify-center absolute ${styles.arrowGroup}`}
+      >
         <span
           onClick={() => {
             setIndex(
@@ -34,7 +36,22 @@ const Carousel: FC<PropsWithChildren> = ({ children }) => {
             );
           }}
           id="leftArrow"
-          className={`absolute lg:left-10 md:left-5 max-md:top-[5px] rotate-180 cursor-pointer`}
+          className={`
+            absolute 
+            transition-transform 
+            ease
+            delay-100 
+            hover:scale-105 
+            hover:opacity-95
+            lg:left-10 
+            md:left-5 
+            max-md:top-[5px] 
+            rotate-180 
+            max-md:rotate-[-90deg] 
+            invert-[100%]
+            opacity-80
+            cursor-pointer
+          `}
         >
           <img src="https://img.icons8.com/?size=1x&id=61&format=png" />
         </span>
@@ -45,7 +62,21 @@ const Carousel: FC<PropsWithChildren> = ({ children }) => {
             );
           }}
           id="rightArrow"
-          className={`absolute lg:right-10 md:right-5 max-md:bottom-[5px] cursor-pointer`}
+          className={`
+            absolute 
+            transition-transform 
+            ease
+            delay-100 
+            hover:scale-105 
+            hover:opacity-95
+            lg:right-10 
+            md:right-5 
+            max-md:bottom-[5px] 
+            max-md:rotate-90 
+            cursor-pointer
+            invert-[100%]
+            opacity-80
+          `}
         >
           <img src="https://img.icons8.com/?size=1x&id=61&format=png" />
         </span>

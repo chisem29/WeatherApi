@@ -6,5 +6,6 @@
   "bracketSpacing": true,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "cursorOffset": -1
 }
