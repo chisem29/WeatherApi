@@ -3,10 +3,10 @@ import { FC } from 'react';
 import styles from './WeekRow.module.sass';
 import useCombineReport from '../../../hooks/useCombineReport';
 import WeekElem from '../WeekElem/WeekElem';
-import SupsensData from '../SupsensData/SupsensData';
 
 const WeekRow: FC = () => {
-  const { weatherRep: data, isLoading, isError } = useCombineReport();
+
+  const { weatherRep: data, isLoading } = useCombineReport();
 
   return (
     <div
@@ -34,10 +34,8 @@ const WeekRow: FC = () => {
            relative
         `}
       >
-        {data?.slice(0, 7)?.map(({ main, dt_txt, weather }, index) => (
-          <SupsensData>
-            <WeekElem {...{ index, main, dt_txt, weather }} />
-          </SupsensData>
+        {(data ?? [{}, {}, {}, {}, {}, {}, {}]).slice(0, 7).map(({main, weather, dt_txt}, index) => (
+          <WeekElem {...{index, main, weather, dt_txt, isLoading}} />
         ))}
       </ul>
     </div>

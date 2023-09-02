@@ -5,7 +5,7 @@ interface weatherRepI {
   cod: string;
   message: any;
   cnt?: number;
-  list?: Array<weatherListElemI>;
+  list: Array<Partial<weatherListElemI>>;
   city?: any
 }
 

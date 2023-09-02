@@ -1,13 +1,13 @@
 export default class DateDay {
-  date: string;
+  private date: string[] | undefined;
   formDate: Date;
 
-  constructor(date: string) {
+  constructor(date: string[] | undefined) {
     this.date = date;
-    this.formDate = new Date(this.date);
+    this.formDate = new Date(this.date?.at(0) ?? '');
   }
 
-  public getWeekDay() {
+  public getWeekDay() : string | null {
     const numWeek = this.formDate.getDay();
     return isNaN(numWeek)
       ? null
@@ -21,7 +21,7 @@ export default class DateDay {
           'saturday',
         ][numWeek];
   }
-  public getMonthDay() {
+  public getMonthDay() : string | null {
     const numMonth = this.formDate.getMonth();
     return isNaN(numMonth)
       ? null
@@ -40,5 +40,10 @@ export default class DateDay {
           'December',
         ][numMonth];
   }
+  public getNumDay() : string | undefined {
+    return this.date?.at(0)?.split('-')?.at(-1) 
+  }
+  public getTimeDay() : string | undefined {
+    return this.date?.at(1)?.slice(0, 5)
+  }
 }
-

@@ -1,5 +1,3 @@
-import { CityContext } from './../providers/ContextProvider';
-import { useContext } from 'react';
 
 import useCity from './useCity';
 import useLocCity from './useLocCity';
@@ -9,9 +7,8 @@ import useRefetchByCity from './useRefetchByCity';
 import cityT from '@/shared/types/city';
 
 const useCombineReport = () => {
-  const { cityIndex } = useContext(CityContext);
 
-  const { city } = useCity(cityIndex);
+  const { city } = useCity();
 
   const { data: loc, refetch: refetchLoc } = useLocCity(city as cityT);
 

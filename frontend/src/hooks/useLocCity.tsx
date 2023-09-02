@@ -4,7 +4,7 @@ import WeatherWeekService from '../services/weatherWeek.service';
 import cityT from '@/shared/types/city';
 
 const weatherWeekService = new WeatherWeekService(
-  'f227fe6641bae569ca6d28d071d27db3',
+  import.meta.env.VITE_ID_TOKEN,
 );
 
 const useLocCity = (city: cityT) => {

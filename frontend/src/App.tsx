@@ -2,7 +2,6 @@ import Layout from './components/layout/Layout';
 import WeekRow from './components/UI/WeekRow/WeekRow';
 import Carousel from './components/UI/Carousel/Carousel';
 import Main from './components/layout/Main/Main';
-import SupsensData from './components/UI/SupsensData/SupsensData';
 import CarouselData from './components/UI/CarouselData/CarouselData';
 
 import ContextProvider from './providers/ContextProvider';
@@ -21,9 +20,7 @@ const App = () => {
         <Layout>
           <Main>
             <Carousel>
-              <SupsensData>
-                <CarouselData />
-              </SupsensData>
+              <CarouselData />
             </Carousel>
             <WeekRow />
           </Main>

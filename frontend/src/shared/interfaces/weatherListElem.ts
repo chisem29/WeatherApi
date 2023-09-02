@@ -8,7 +8,7 @@ interface weatherListElemI {
     main: string;
     description: string;
   }>;
-  wind: { speed: number };
+  wind: { speed: number, deg : number  };
 }
 
 export default weatherListElemI

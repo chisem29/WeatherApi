@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { DefinedUseQueryResult } from '@tanstack/react-query';
 
 import cityT from '@/shared/types/city';
+import queryRefetchI from '@/shared/interfaces/queryRefetch';
 
 const useRefetchByCity = ({
   refetch,
   city,
-}: Pick<DefinedUseQueryResult, 'refetch'> & { city: cityT }) => {
+}: queryRefetchI & { city: cityT }) => {
   const refetchByCity = () => {
     useEffect(() => {
       refetch();
