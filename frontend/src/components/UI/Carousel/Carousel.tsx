@@ -21,6 +21,7 @@ const Carousel: FC<PropsWithChildren> = ({ children }) => {
         max-lg:h-full 
         w-full
         relative
+        max-md:overflow-y-scroll
       `}
     >
       <img

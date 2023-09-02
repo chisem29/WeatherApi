@@ -22,7 +22,7 @@ const CarouselData: FC = () => {
   return (
     <FallbackData {...{ isLoading }}>
       <>
-        <div className="flex flex-col relative z-10 py-2 gap-y-1 text-slate-50">
+        <div className="flex flex-col relative z-10 py-2 md:gap-y-1 text-slate-50">
           <div className={`${styles.headReport} items-center flex flex-col`}>
             <h2 className="text-[2em] font-light">{city}</h2>
             <p className="capitalize text-slate-200 tracking-wide break-words">

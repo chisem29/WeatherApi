@@ -15,8 +15,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
         relative
         h-screen
         min-h-screen
-        w-full
-        max-w-screen
+        w-screen
       `}
     >
       <img
