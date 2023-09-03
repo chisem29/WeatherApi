@@ -3,12 +3,14 @@ interface weatherListElemI {
   main: {
     temp: number;
     feels_like: number;
+    pressure: number;
+    humidity: number;
   };
   weather: Array<{
     main: string;
     description: string;
   }>;
-  wind: { speed: number, deg : number  };
+  wind: { speed: number; deg: number };
 }
 
-export default weatherListElemI
+export default weatherListElemI;

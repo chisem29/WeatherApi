@@ -17,6 +17,8 @@ const CarouselData: FC = () => {
 
   const dataCurDay = data?.at(0) as weatherListElemI;
 
+  console.log(dataCurDay)
+
   const InfoCurDay = new DateDay(dataCurDay?.dt_txt?.split(' '));
 
   return (
@@ -62,27 +64,27 @@ const CarouselData: FC = () => {
                     key: 'pressure',
                     src: 'https://img.icons8.com/?size=1x&id=101236&format=png',
                     aspect: 'auto',
+                    info: `${Math.round(dataCurDay?.main?.pressure * 0.750064)} mm Hg`,
                   },
                   {
                     key: 'humidity',
                     src: 'https://img.icons8.com/?size=1x&id=18585&format=png',
                     aspect: '[4/3]',
+                    info: `${dataCurDay?.main?.humidity}% humidity`,
                   },
                   {
                     key: 'wind',
                     src: 'https://img.icons8.com/?size=1x&id=107769&format=png',
                     aspect: '[4/3]',
+                    info: `${Math.round(dataCurDay?.wind?.speed)}m/s`,
                   },
-                ].map(({ src, key, aspect }) => (
-                  <li key={key} className="flex items-center gap-x-1">
+                ].map(({ src, key, aspect, info }) => (
+                  <li key={key} className="flex items-center gap-x-2">
                     <img
                       className={`invert w-[50px] aspect-${aspect}`}
                       src={src}
                     />
-                    <div className="text-slate-200 tracking-wide">
-                      {Math.round(dataCurDay?.wind?.speed)} m/s{' '}
-                      {getWindDirection(dataCurDay?.wind?.deg)}
-                    </div>
+                    <div className="text-slate-200 tracking-wide">{info}</div>
                   </li>
                 ))}
               </ul>
